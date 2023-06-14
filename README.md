@@ -23,9 +23,8 @@ To perform PCA matrix summation with a 2D grid and 2D blocks and adapting it to 
 ## Program:
 **Done By: _Aathish S_**  
 **Reg.No: _212221040002_**
-
-sumMatrixOnGPU-2D-grid-2D-block.cu:
-```
+## Program:
+```python
 #include "common.h"
 #include <cuda_runtime.h>
 #include <stdio.h>
@@ -95,8 +94,7 @@ void checkResult(int *hostRef, int *gpuRef, const int N)
 }
 
 // grid 2D block 2D
-__global__ void sumMatrixOnGPU2D(int *MatA, int *MatB, int *MatC, int nx,
-                                 int ny)
+__global__ void sumMatrixOnGPU2D(int *MatA, int *MatB, int *MatC, int nx,int ny)
 {
     unsigned int ix = threadIdx.x + blockIdx.x * blockDim.x;
     unsigned int iy = threadIdx.y + blockIdx.y * blockDim.y;
@@ -197,20 +195,10 @@ int main(int argc, char **argv)
     return (0);
 }
 ```
+
 ## Output:
-```
-root@SAV-MLSystem:/home/student/Aathish_Exp_02# nvcc sumMatrixOnGPU-2D-grid-2D-block.cu -o sumMatrixOnGPU-2D-grid-2D-block
-root@SAV-MLSystem:/home/student/Aathish_Exp_02# nvcc sumMatrixOnGPU-2D-grid-2D-block.cu
-root@SAV-MLSystem:/home/student/Aathish_Exp_02# ./sumMatrixOnGPU-2D-grid-2D-block
-./sumMatrixOnGPU-2D-grid-2D-block Starting...
-Using Device 0: NVIDIA GeForce GT 710
-Matrix size: nx 16384 ny 16384
-Matrix initialization elapsed 6.922423 sec
-sumMatrixOnHost elapsed 0.566353 sec
-Error: sumMatrixOnGPU-2D-grid-2D-block.cu:126, code: 2, reason: out of memory
-root@SAV-MLSystem:/home/student/Aathish_Exp_02#
-```
- ![image](https://user-images.githubusercontent.com/91734840/236863397-4f3e46b2-a519-4c3e-885b-6cdff46f485f.png)
+![image](https://github.com/Harshini1331/PCA-Matrix-summation-with-a-2D-grid-and-2D-blocks.-Adapt-it-to-integer-matrix-addition.-/assets/75235554/2d01b97c-5e13-4c46-86b5-f41277f6c1d7)
+
 
 # EXPLANATION:
 * The output of the program sumMatrixOnGPU-2D-grid-2D-block has started running and it is using the NVIDIA GeForce GT 710 device for CUDA processing. The program is designed to perform matrix summation using 2D grid and 2D blocks in CUDA programming.
